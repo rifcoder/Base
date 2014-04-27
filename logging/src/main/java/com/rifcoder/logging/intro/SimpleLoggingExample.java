@@ -6,6 +6,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
+ * Simple logback example
+ *
+ * Use configuration "-Dlogback.configurationFile=simple/example-logback-configuration.xml"
  * @author Sergey.Savchuk@db.com
  */
 public class SimpleLoggingExample {
