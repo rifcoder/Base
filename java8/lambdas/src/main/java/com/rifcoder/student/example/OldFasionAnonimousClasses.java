@@ -56,7 +56,7 @@ public class OldFasionAnonimousClasses {
     private void doFilteringWithLambda() {
         SomeList<Student, Double> myStudents = new SomeList<>(students);
         double highestScore = myStudents.
-                filter((Student s) -> s.getGraduatedYear() == 2011).
+                filter(s -> s.getGraduatedYear() == 2011).
                 map(Student::getScore).
                 max();
 
