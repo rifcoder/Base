@@ -7,22 +7,21 @@ import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.util.List;
+import java.util.function.Predicate;
 
 /**
  * User: rifcoder
  * Date: 30/04/14
  */
 public class OldFasionAnonimousClasses {
-
     private static Logger logger = LoggerFactory.getLogger(OldFasionAnonimousClasses.class);
+    private final List<Student> students;
 
-    public static void main(String[] args) {
-        OldFasionAnonimousClasses instance = new OldFasionAnonimousClasses();
-        instance.doFiltering();
+    public OldFasionAnonimousClasses() {
+        this.students = populateStudentsList();
     }
 
-    private void doFiltering() {
-        List<Student> students = populateStudentsList();
+    private void doFilteringExternalIteration() {
         double highestScore = 0d;
         for (Student student : students) {
             if (student.getGraduatedYear() == 2011) {
@@ -35,7 +34,31 @@ public class OldFasionAnonimousClasses {
         logger.info("Max score for 2011: {}", highestScore);
     }
 
+    private void doFilteringInnerClasses() {
+        double highestScore = 0.0;
+        SomeList<Student, Double> myStudents = new SomeList<>(students);
+        highestScore = myStudents.filter(new Predicate<Student>() {
+            @Override
+            public boolean test(Student student) {
+                return student.getGraduatedYear() == 2011;
+            }
+        }).map(new Mapper<Student, Double>() {
+            @Override
+            public Double extract(Student student) {
+                return student.getScore();
+            }
+        }).max();
+
+        logger.info("Inner class result. Max score for 2011: {}", highestScore);
+    }
+
     private List<Student> populateStudentsList() {
         return CommonLoader.loadStudents(new File("students.txt"));
+    }
+
+    public static void main(String[] args) {
+        OldFasionAnonimousClasses instance = new OldFasionAnonimousClasses();
+        instance.doFilteringExternalIteration();
+        instance.doFilteringInnerClasses();
     }
 }
