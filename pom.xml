@@ -20,6 +20,7 @@
 
     <modules>
         <module>logging</module>
+        <module>java8</module>
     </modules>
 
     <dependencies>
