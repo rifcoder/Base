@@ -52,6 +52,16 @@ public class OldFasionAnonimousClasses {
         logger.info("Inner class result. Max score for 2011: {}", highestScore);
     }
 
+    private void doFilteringWithLambda() {
+        SomeList<Student, Double> myStudents = new SomeList<>(students);
+        double highestScore = myStudents.
+                filter((Student s) -> s.getGraduatedYear() == 2011).
+                map(Student::getScore).
+                max();
+
+        logger.info("Lambda result. Max sore for 2011: {}", highestScore);
+    }
+
     private List<Student> populateStudentsList() {
         return CommonLoader.loadStudents(new File("students.txt"));
     }
@@ -60,5 +70,6 @@ public class OldFasionAnonimousClasses {
         OldFasionAnonimousClasses instance = new OldFasionAnonimousClasses();
         instance.doFilteringExternalIteration();
         instance.doFilteringInnerClasses();
+        instance.doFilteringWithLambda();
     }
 }
