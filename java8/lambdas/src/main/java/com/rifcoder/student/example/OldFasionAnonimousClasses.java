@@ -34,6 +34,7 @@ public class OldFasionAnonimousClasses {
         logger.info("Max score for 2011: {}", highestScore);
     }
 
+    @SuppressWarnings({"Convert2Lambda", "Anonymous2MethodRef"})
     private void doFilteringInnerClasses() {
         double highestScore = 0.0;
         SomeList<Student, Double> myStudents = new SomeList<>(students);
