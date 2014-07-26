@@ -22,6 +22,7 @@
         <module>logging</module>
         <module>java8</module>
         <module>javaIO</module>
+        <module>javaCore</module>
     </modules>
 
     <dependencies>
