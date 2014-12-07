@@ -41,8 +41,7 @@ public class NonblockingSingleThreadedSelectorServer {
 
         while (true) {
             selector.select();
-            for (Iterator<SelectionKey> iterator = selector.selectedKeys().iterator(); iterator.hasNext(); ) {
-                SelectionKey key = iterator.next();
+            for (SelectionKey key : selector.selectedKeys()) {
                 if (key.isValid()) {
                     if (key.isAcceptable()) {
                         // someone connected to our ServerSocketChannel

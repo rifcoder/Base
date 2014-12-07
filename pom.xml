@@ -23,6 +23,7 @@
         <module>java8</module>
         <module>javaIO</module>
         <module>javaCore</module>
+        <module>sandbox</module>
     </modules>
 
     <dependencies>
