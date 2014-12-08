@@ -41,7 +41,8 @@ public class NonblockingSingleThreadedSelectorServer {
 
         while (true) {
             selector.select();
-            for (SelectionKey key : selector.selectedKeys()) {
+            for (Iterator<SelectionKey> iterator = selector.selectedKeys().iterator(); iterator.hasNext(); ) {
+                SelectionKey key = iterator.next();
                 if (key.isValid()) {
                     if (key.isAcceptable()) {
                         // someone connected to our ServerSocketChannel
@@ -54,13 +55,14 @@ public class NonblockingSingleThreadedSelectorServer {
                         write(key);
                     }
                 }
+                iterator.remove();
             }
         }
     }
 
     private static void accept(SelectionKey key) throws IOException {
         ServerSocketChannel ssc = (ServerSocketChannel) key.channel();
-        SocketChannel socketChannel = ssc.accept(); //nonblocking, never null!!!
+        SocketChannel socketChannel = ssc.accept(); //nonblocking, never null!!!???
         if (socketChannel != null) {
             socketChannel.configureBlocking(false);
             socketChannel.register(key.selector(), SelectionKey.OP_READ);
