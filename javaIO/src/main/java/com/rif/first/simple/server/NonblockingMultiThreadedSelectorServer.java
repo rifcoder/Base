@@ -70,11 +70,9 @@ public class NonblockingMultiThreadedSelectorServer {
     private static void accept(SelectionKey key) throws IOException {
         ServerSocketChannel ssc = (ServerSocketChannel) key.channel();
         SocketChannel socketChannel = ssc.accept(); //nonblocking, never null!!!
-        if (socketChannel != null) {
-            socketChannel.configureBlocking(false);
-            socketChannel.register(key.selector(), SelectionKey.OP_READ);
-            pendingData.put(socketChannel, new ConcurrentLinkedQueue<>());
-        }
+        socketChannel.configureBlocking(false);
+        socketChannel.register(key.selector(), SelectionKey.OP_READ);
+        pendingData.put(socketChannel, new ConcurrentLinkedQueue<>());
     }
 
     private static void read(SelectionKey key) throws IOException {
