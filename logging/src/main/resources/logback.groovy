@@ -33,7 +33,7 @@ appender("CONSOLE", ConsoleAppender) {
 }
 
 
-logger("com.rifcoder", INFO, ["FILE"])
+logger("com.rifcoder", DEBUG, ["FILE"])
 
 logger("demo", WARN, ["CONSOLE"])
 
