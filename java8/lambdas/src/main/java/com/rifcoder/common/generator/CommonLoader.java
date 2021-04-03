@@ -10,25 +10,23 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * User: rifcoder
  * Date: 01/05/14
  */
 public class CommonLoader {
-    private static Logger logger = LoggerFactory.getLogger(CommonLoader.class);
+    private static final Logger logger = LoggerFactory.getLogger(CommonLoader.class);
 
     public static List<Student> loadStudents(File file) {
         List<Student> studentList = new ArrayList<>();
         try (FileReader reader = new FileReader(file)) {
             try (BufferedReader bufferedReader = new BufferedReader(reader)) {
-                String line;
-                while ((line = bufferedReader.readLine()) != null) {
-                    if (line.isEmpty()) {
-                        continue;
-                    }
-                    studentList.add(loadStudent(line));
-                }
+                studentList = bufferedReader.lines()
+                        .filter(line -> !line.isEmpty())
+                        .map(CommonLoader::loadStudent)
+                        .collect(Collectors.toList());
             }
         } catch (IOException e) {
             logger.error("There was error during the file processing", e);

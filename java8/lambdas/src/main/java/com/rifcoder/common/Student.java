@@ -5,9 +5,9 @@ package com.rifcoder.common;
  * Date: 30/04/14
  */
 public class Student {
-    private Person person;
-    private int graduatedYear;
-    private double score;
+    private final Person person;
+    private final int graduatedYear;
+    private final double score;
 
     public Student(Person person, short graduatedYear, double score) {
         this.person = person;

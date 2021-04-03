@@ -5,8 +5,8 @@ package com.rifcoder.common;
  * Date: 01/05/14
  */
 public class Person {
-    private String firstName;
-    private String lastName;
+    private final String firstName;
+    private final String lastName;
 
     public Person(String firstName, String lastName) {
         this.firstName = firstName;
