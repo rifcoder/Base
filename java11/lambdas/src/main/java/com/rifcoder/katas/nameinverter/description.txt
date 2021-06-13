@@ -1,0 +1,5 @@
+1. Empty string "" should return empty string ""
+2. null should produce NullPointerException
+3. String with just one or more spaces i.e. "   " should return the empty string ""
+4. Passing just first name i.e. "John" should return it "John"
+5. Skip honorific part for name. I.e. "Mr. Jonh Smith" should return "Smith, John"
