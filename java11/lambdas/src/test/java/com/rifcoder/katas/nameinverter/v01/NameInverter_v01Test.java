@@ -44,9 +44,21 @@ class NameInverter_v01Test {
     }
 
     @Test
-    @DisplayName("Not formated with a lot of spaces")
-    void notFormatedWithALotOfSpaces() {
+    @DisplayName("Not formatted with a lot of spaces")
+    void notFormattedWithALotOfSpaces() {
         assertThat(NameInverter_v01.invert("James    Bond")).isEqualTo("Bond, James");
         assertThat(NameInverter_v01.invert("  Alice   May  ")).isEqualTo("May, Alice");
     }
+
+    @Test
+    @DisplayName("Honorifics should be omitted")
+    void honorificsShouldBeOmitted() {
+        assertThat(NameInverter_v01.invert("Mr. John Smith")).isEqualTo("Smith, John");
+    }
+
+//    @Test
+//    @DisplayName("Postnominals should be in the end")
+//    void postnominalsShouldBeInTheEnd() {
+//        assertThat(NameInverter_v01.invert("John Smith Sr.")).isEqualTo("Smith, John Sr.");
+//    }
 }

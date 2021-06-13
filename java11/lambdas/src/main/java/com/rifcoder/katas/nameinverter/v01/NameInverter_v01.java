@@ -23,8 +23,8 @@ public class NameInverter_v01 {
             return name;
         }
 
-        var namePlusSirnamePattern = Pattern.compile("([a-zA-Z\\-]+)\\s+([a-zA-Z\\-]+)");
-        var matcher = namePlusSirnamePattern.matcher(name);
+        var namePlusSurnamePattern = Pattern.compile("([a-zA-Z\\-]+)\\s+([a-zA-Z\\-]+)");
+        var matcher = namePlusSurnamePattern.matcher(name);
         if (matcher.matches()) {
             var firstName = matcher.group(1);
             var lastName = matcher.group(2);
