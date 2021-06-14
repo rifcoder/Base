@@ -54,11 +54,12 @@ class NameInverter_v01Test {
     @DisplayName("Honorifics should be omitted")
     void honorificsShouldBeOmitted() {
         assertThat(NameInverter_v01.invert("Mr. John Smith")).isEqualTo("Smith, John");
+        assertThat(NameInverter_v01.invert("Ms. Jane Smith")).isEqualTo("Smith, Jane");
     }
 
-//    @Test
-//    @DisplayName("Postnominals should be in the end")
-//    void postnominalsShouldBeInTheEnd() {
-//        assertThat(NameInverter_v01.invert("John Smith Sr.")).isEqualTo("Smith, John Sr.");
-//    }
+    @Test
+    @DisplayName("Postnominals should be in the end")
+    void postnominalsShouldBeInTheEnd() {
+        assertThat(NameInverter_v01.invert("John Smith Sr.")).isEqualTo("Smith, John Sr.");
+    }
 }
