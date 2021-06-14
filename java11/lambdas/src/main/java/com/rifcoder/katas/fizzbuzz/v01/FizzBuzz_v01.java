@@ -2,8 +2,8 @@ package com.rifcoder.katas.fizzbuzz.v01;
 
 public class FizzBuzz_v01 {
     public static String fizzBuzz(int number) {
-        if (number < 0) {
-            throw new IllegalArgumentException("Negative numbers are not accepted!");
+        if (number <= 0) {
+            throw new IllegalArgumentException("Non positive numbers are not accepted!");
         }
         String result = "";
         if (number % 3 == 0) {

@@ -1,11 +1,10 @@
 package com.rifcoder.katas.fizzbuzz.v01;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class FizzBuzz_v01Test {
     @Test
@@ -25,7 +24,7 @@ class FizzBuzz_v01Test {
 
     @Test
     @DisplayName("Return Buzz for numbers divides by 5")
-    void returnBazzForNumbersDivedesBy5() {
+    void returnBuzzForNumbersDividesBy5() {
         assertThat(FizzBuzz_v01.fizzBuzz(5)).isEqualTo("Buzz");
         assertThat(FizzBuzz_v01.fizzBuzz(100)).isEqualTo("Buzz");
         assertThat(FizzBuzz_v01.fizzBuzz(1010)).isEqualTo("Buzz");
@@ -44,6 +43,6 @@ class FizzBuzz_v01Test {
     void ifNumberIsNegativeThrowsException() {
         assertThatThrownBy(() -> FizzBuzz_v01.fizzBuzz(-1))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("Negative numbers are not accepted!");
+                .hasMessage("Non positive numbers are not accepted!");
     }
 }
