@@ -39,7 +39,7 @@ class FizzBuzz_v01Test {
     }
 
     @Test
-    @DisplayName("If number is negative throws exception")
+    @DisplayName("If number is non positive throws exception")
     void ifNumberIsNegativeThrowsException() {
         assertThatThrownBy(() -> FizzBuzz_v01.fizzBuzz(-1))
                 .isInstanceOf(IllegalArgumentException.class)
