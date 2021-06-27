@@ -12,10 +12,15 @@ public class CarFleet {
 
         List<CarInfo> sortedCarList = sortCarsByPosition(target, position, speed);
 
-        var carFleet = sortedCarList.get(0);
+        return calculateFleetCount(sortedCarList);
+    }
+
+    private int calculateFleetCount(List<CarInfo> sortedCarList) {
         var result = 1;
+        var carFleet = sortedCarList.get(0);
         for (int i = 1; i < sortedCarList.size(); i++) {
             CarInfo currentCar = sortedCarList.get(i);
+            //could not catchup forward going car
             if (currentCar.time > carFleet.time) {
                 result++;
                 carFleet = currentCar;
